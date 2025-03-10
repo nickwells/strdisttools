@@ -16,5 +16,5 @@ func SuggestAlternatives(n int, s string, pop []string) string {
 		return ""
 	}
 
-	return `, did you mean "` + english.Join(alts, `", "`, `" or "`) + `"`
+	return `, did you mean ` + english.JoinQuoted(alts, ", ", " or ", `"`, `"`)
 }
