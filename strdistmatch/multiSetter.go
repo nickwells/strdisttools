@@ -3,14 +3,15 @@ package main
 import (
 	"errors"
 	"fmt"
+	"maps"
 	"regexp"
+	"slices"
 	"sort"
 	"strings"
 
 	"github.com/nickwells/english.mod/english"
 	"github.com/nickwells/param.mod/v6/param"
 	"github.com/nickwells/param.mod/v6/psetter"
-	"golang.org/x/exp/maps"
 )
 
 // the indexes for the parts returned by FindAllStringSubmatch for the
@@ -393,8 +394,8 @@ func (s *MultiSetterBase[S, T]) getSetter(i int, evKey string,
 		}
 	}
 
-	entryValNames := maps.Keys(s.EntryValSetterMap)
-	aliasNames := maps.Keys(s.EntryValSMAliases)
+	entryValNames := slices.Collect(maps.Keys(s.EntryValSetterMap))
+	aliasNames := slices.Collect(maps.Keys(s.EntryValSMAliases))
 	entryValNames = append(entryValNames, aliasNames...)
 
 	return evKey, EntryValSetter{},

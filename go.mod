@@ -18,7 +18,7 @@ require github.com/nickwells/tempus.mod v1.2.1 // indirect
 require (
 	github.com/nickwells/check.mod/v2 v2.1.16
 	github.com/nickwells/mathutil.mod/v2 v2.5.0 // indirect
-	golang.org/x/exp v0.0.0-20250305212735-054e65f0b394
+	golang.org/x/exp v0.0.0-20250305212735-054e65f0b394 // indirect
 )
 
 require (
