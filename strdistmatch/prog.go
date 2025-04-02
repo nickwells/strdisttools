@@ -78,10 +78,10 @@ func (prog *Prog) Run(searchWords []string) {
 		for _, f := range finders {
 			vals = append(vals,
 				f.Algo.Name(), f.Algo.Desc(),
-				f.FinderConfig.Threshold,
-				f.FinderConfig.MinStrLength,
-				f.FinderConfig.MapToLowerCase,
-				f.FinderConfig.StripRunes,
+				f.Threshold,
+				f.MinStrLength,
+				f.MapToLowerCase,
+				f.StripRunes,
 			)
 			sd := f.FindLike(s, pop...)
 			vals = append(vals, len(sd))
@@ -159,7 +159,7 @@ func getMaxStripRunesLen(finders []*strdist.Finder) uint {
 	maxLen := 0
 
 	for _, f := range finders {
-		l := len(f.FinderConfig.StripRunes)
+		l := len(f.StripRunes)
 		if l > maxLen {
 			maxLen = l
 		}
