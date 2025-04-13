@@ -113,9 +113,7 @@ func getMaxStrLen(ss []string) uint {
 	maxLen := 0
 
 	for _, s := range ss {
-		if len(s) > maxLen {
-			maxLen = len(s)
-		}
+		maxLen = max(maxLen, len(s))
 	}
 
 	return uint(maxLen) //nolint:gosec
@@ -126,10 +124,7 @@ func getMaxAlgoNameLen(finders []*strdist.Finder) uint {
 	maxLen := 0
 
 	for _, f := range finders {
-		l := len(f.Algo.Name())
-		if l > maxLen {
-			maxLen = l
-		}
+		maxLen = max(len(f.Algo.Name()), maxLen)
 	}
 
 	return uint(maxLen) //nolint:gosec
@@ -141,13 +136,10 @@ func getMaxAlgoDescLen(finders []*strdist.Finder) uint {
 
 	for _, f := range finders {
 		s := f.Algo.Desc()
-		sParts := strings.Split(s, "\n")
+		sParts := strings.SplitSeq(s, "\n")
 
-		for _, sp := range sParts {
-			l := len(sp)
-			if l > maxLen {
-				maxLen = l
-			}
+		for sp := range sParts {
+			maxLen = max(maxLen, len(sp))
 		}
 	}
 
@@ -159,10 +151,7 @@ func getMaxStripRunesLen(finders []*strdist.Finder) uint {
 	maxLen := 0
 
 	for _, f := range finders {
-		l := len(f.StripRunes)
-		if l > maxLen {
-			maxLen = l
-		}
+		maxLen = max(len(f.StripRunes), maxLen)
 	}
 
 	return uint(maxLen) //nolint:gosec
