@@ -6,8 +6,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/nickwells/col.mod/v4/col"
-	"github.com/nickwells/col.mod/v4/colfmt"
+	"github.com/nickwells/col.mod/v5/col"
+	"github.com/nickwells/col.mod/v5/colfmt"
 	"github.com/nickwells/strdist.mod/v2/strdist"
 	"github.com/nickwells/verbose.mod/verbose"
 )
@@ -189,53 +189,53 @@ func (prog *Prog) makeReport(
 		return nil
 	}
 
-	targetCol := col.New(colfmt.String{W: maxTargetLen}, "target")
+	targetCol := col.New(&colfmt.String{W: maxTargetLen}, "target")
 	cols := []*col.Col{
 		col.New(
-			colfmt.String{
+			&colfmt.String{
 				W: maxAlgoNameLen,
 			},
 			"algorithm", "name"),
 		col.New(
-			colfmt.WrappedString{
+			&colfmt.WrappedString{
 				W: maxAlgoDetailsLen,
 			},
 			"algorithm", "details"),
 		col.New(
 			&colfmt.Float{
-				W:         9,
-				Prec:      5,
-				IgnoreNil: true,
+				W:       9,
+				Prec:    5,
+				NilHdlr: colfmt.NilHdlr{IgnoreNil: true},
 			},
 			"Finder", "", "threshold"),
 		col.New(
 			&colfmt.Int{
-				W:         7,
-				IgnoreNil: true,
+				W:       7,
+				NilHdlr: colfmt.NilHdlr{IgnoreNil: true},
 			}, "Finder", "minimum", "str len"),
-		col.New(colfmt.Bool{}, "Finder", "map to", "lower"),
+		col.New(&colfmt.Bool{}, "Finder", "map to", "lower"),
 		col.New(
-			colfmt.String{
-				W:         maxStripRunesLen,
-				IgnoreNil: true,
+			&colfmt.String{
+				W:       maxStripRunesLen,
+				NilHdlr: colfmt.NilHdlr{IgnoreNil: true},
 			},
 			"Finder", "strip", "runes"),
-		col.New(colfmt.Int{W: 3, HandleZeroes: true}, "# of", "results"),
+		col.New(&colfmt.Int{W: 3, HandleZeroes: true}, "# of", "results"),
 	}
 
 	for i := range prog.maxResults {
 		commonHeader := fmt.Sprintf("result %d", i+1)
 		cols = append(cols, col.New(
 			&colfmt.Float{
-				W:         8,
-				Prec:      4,
-				IgnoreNil: true,
+				W:       8,
+				Prec:    4,
+				NilHdlr: colfmt.NilHdlr{IgnoreNil: true},
 			},
 			commonHeader, "distance"))
 		cols = append(cols, col.New(
-			colfmt.String{
-				W:         maxTargetLen * 2,
-				IgnoreNil: true,
+			&colfmt.String{
+				W:       maxTargetLen * 2,
+				NilHdlr: colfmt.NilHdlr{IgnoreNil: true},
 			},
 			commonHeader, "value"))
 	}
