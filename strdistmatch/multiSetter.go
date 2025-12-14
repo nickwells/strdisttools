@@ -478,29 +478,32 @@ func (s MultiSetterBase[S, T]) allowedValuesNames() string {
 		return ""
 	}
 
-	str := "\n\n" +
-		"the allowed names are"
+	var str strings.Builder
+	str.WriteString("\n\nthe allowed names are")
+
 	names, maxLen := s.AVals.Keys()
 
 	sort.Strings(names)
 
 	for _, n := range names {
-		str += fmt.Sprintf("\n- %-*s: %s",
+		fmt.Fprintf(&str, "\n- %-*s: %s",
 			maxLen, n, s.AVals[S(n)])
 	}
 
-	return str
+	return str.String()
 }
 
 // allowedValuesSubvals returns a string reflecting the subval names and
 // allowed values
 func (s MultiSetterBase[S, T]) allowedValuesSubvals() string {
-	str := "\n\n" +
-		"the allowed"
+	var str strings.Builder
+
+	str.WriteString("\n\nthe allowed")
+
 	if len(s.EntryValSetterMap) > 1 {
-		str += " subval names and values are:"
+		str.WriteString(" subval names and values are:")
 	} else {
-		str += " subval name and value is:"
+		str.WriteString(" subval name and value is:")
 	}
 
 	maxLen := 0
@@ -526,10 +529,10 @@ func (s MultiSetterBase[S, T]) allowedValuesSubvals() string {
 			valSeenBefore[val] = k
 		}
 
-		str += fmt.Sprintf("\n- %-*s: %s", maxLen, k, val)
+		fmt.Fprintf(&str, "\n- %-*s: %s", maxLen, k, val)
 	}
 
-	return str
+	return str.String()
 }
 
 // allowedValuesSubvalAliases returns a string given any alias names
@@ -539,12 +542,14 @@ func (s MultiSetterBase[S, T]) allowedValuesSubvalAliases() string {
 		return ""
 	}
 
-	str := "\n\n"
+	var str strings.Builder
+	str.WriteString("\n\n")
 
 	if len(s.EntryValSMAliases) == 1 {
-		str += "the following alias for the subval name is allowed: "
+		str.WriteString("the following alias for the subval name is allowed: ")
 	} else {
-		str += "the following aliases for the subval names are allowed: "
+		str.WriteString(
+			"the following aliases for the subval names are allowed: ")
 	}
 
 	maxLen := 0
@@ -561,10 +566,10 @@ func (s MultiSetterBase[S, T]) allowedValuesSubvalAliases() string {
 	sort.Strings(aliases)
 
 	for _, k := range aliases {
-		str += fmt.Sprintf("\n- %-*s: %s", maxLen, k, s.EntryValSMAliases[k])
+		fmt.Fprintf(&str, "\n- %-*s: %s", maxLen, k, s.EntryValSMAliases[k])
 	}
 
-	return str
+	return str.String()
 }
 
 // AllowedValues returns a string describing the allowed values
