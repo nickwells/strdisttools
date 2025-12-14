@@ -106,6 +106,7 @@ func addParams(prog *Prog) param.PSetOptFunc {
 						func(s string) error {
 							runeIdx := map[rune]int{}
 							runeSlc := []rune(s)
+
 							for i, r := range runeSlc {
 								if idx, ok := runeIdx[r]; ok {
 									return fmt.Errorf(
@@ -117,6 +118,7 @@ func addParams(prog *Prog) param.PSetOptFunc {
 										idx+1, english.OrdinalSuffix(idx+1))
 								}
 							}
+
 							return nil
 						},
 					},
