@@ -512,9 +512,7 @@ func (s MultiSetterBase[S, T]) allowedValuesSubvals() string {
 	for k := range s.EntryValSetterMap {
 		evsKeys = append(evsKeys, k)
 
-		if len(k) > maxLen {
-			maxLen = len(k)
-		}
+		maxLen = max(len(k), maxLen)
 	}
 
 	sort.Strings(evsKeys)
@@ -558,9 +556,7 @@ func (s MultiSetterBase[S, T]) allowedValuesSubvalAliases() string {
 	for k := range s.EntryValSMAliases {
 		aliases = append(aliases, k)
 
-		if len(k) > maxLen {
-			maxLen = len(k)
-		}
+		maxLen = max(len(k), maxLen)
 	}
 
 	sort.Strings(aliases)

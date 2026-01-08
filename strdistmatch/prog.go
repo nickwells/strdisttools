@@ -6,8 +6,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/nickwells/col.mod/v5/col"
-	"github.com/nickwells/col.mod/v5/colfmt"
+	"github.com/nickwells/col.mod/v6/col"
+	"github.com/nickwells/col.mod/v6/colfmt"
 	"github.com/nickwells/strdist.mod/v2/strdist"
 	"github.com/nickwells/verbose.mod/verbose"
 )
@@ -109,29 +109,29 @@ func (prog *Prog) Run(searchWords []string) {
 }
 
 // getMaxStrLen returns the maximum length of the strings in the slice
-func getMaxStrLen(ss []string) uint {
+func getMaxStrLen(ss []string) int {
 	maxLen := 0
 
 	for _, s := range ss {
 		maxLen = max(maxLen, len(s))
 	}
 
-	return uint(maxLen) //nolint:gosec
+	return maxLen
 }
 
 // getMaxAlgoNameLen returns the maximum length of the Algorithm names
-func getMaxAlgoNameLen(finders []*strdist.Finder) uint {
+func getMaxAlgoNameLen(finders []*strdist.Finder) int {
 	maxLen := 0
 
 	for _, f := range finders {
 		maxLen = max(len(f.Algo.Name()), maxLen)
 	}
 
-	return uint(maxLen) //nolint:gosec
+	return maxLen
 }
 
 // getMaxAlgoDescLen returns the maximum length of the Algorithm descriptions
-func getMaxAlgoDescLen(finders []*strdist.Finder) uint {
+func getMaxAlgoDescLen(finders []*strdist.Finder) int {
 	maxLen := 0
 
 	for _, f := range finders {
@@ -143,18 +143,18 @@ func getMaxAlgoDescLen(finders []*strdist.Finder) uint {
 		}
 	}
 
-	return uint(maxLen) //nolint:gosec
+	return maxLen
 }
 
 // getMaxStripRunesLen returns the maximum length of the StripRunes value
-func getMaxStripRunesLen(finders []*strdist.Finder) uint {
+func getMaxStripRunesLen(finders []*strdist.Finder) int {
 	maxLen := 0
 
 	for _, f := range finders {
 		maxLen = max(len(f.StripRunes), maxLen)
 	}
 
-	return uint(maxLen) //nolint:gosec
+	return maxLen
 }
 
 // makeReport generates the report for printing the results of the search
