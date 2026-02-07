@@ -13,6 +13,6 @@ func main() {
 	ps := makeParamSet(prog)
 	ps.Parse()
 
-	prog.Run(ps.Remainder())
+	prog.Run(ps.TrailingParams())
 	os.Exit(prog.exitStatus)
 }

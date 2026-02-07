@@ -1,19 +1,22 @@
 package main
 
 import (
-	"github.com/nickwells/param.mod/v6/param"
-	"github.com/nickwells/param.mod/v6/paramset"
+	"github.com/nickwells/param.mod/v7/param"
+	"github.com/nickwells/param.mod/v7/paramset"
 	"github.com/nickwells/verbose.mod/verbose"
 	"github.com/nickwells/versionparams.mod/versionparams"
 )
 
 // makeParamSet generates the param set ready for parsing
 func makeParamSet(prog *Prog) *param.PSet {
-	return paramset.NewOrPanic(
+	return paramset.New(
 		addParams(prog),
 		addNotes(prog),
+
 		verbose.AddParams,
 		versionparams.AddParams,
+
+		param.SetTrailingParamsName("strings to match"),
 		param.SetProgramDescription(
 			"this will find matches to the given string from the given"+
 				" population. You can give multiple different algorithms"+

@@ -6,8 +6,8 @@ import (
 	"github.com/nickwells/check.mod/v2/check"
 	"github.com/nickwells/english.mod/english"
 	"github.com/nickwells/filecheck.mod/filecheck"
-	"github.com/nickwells/param.mod/v6/param"
-	"github.com/nickwells/param.mod/v6/psetter"
+	"github.com/nickwells/param.mod/v7/param"
+	"github.com/nickwells/param.mod/v7/psetter"
 	"github.com/nickwells/strdist.mod/v2/strdist"
 )
 
@@ -153,8 +153,6 @@ func addParams(prog *Prog) param.PSetOptFunc {
 			},
 			"the maximum number of results to show.",
 		)
-
-		_ = ps.SetNamedRemHandler(param.NullRemHandler{}, "strings to match")
 
 		return nil
 	}
