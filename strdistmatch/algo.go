@@ -38,6 +38,7 @@ var algoMakers = map[string]algoMaker{
 			MinLength:         ap.minNGramLen,
 			OverFlowTheSource: ap.overflowTheSource,
 		}
+
 		return strdist.NewCosineAlgo(ngc, ap.maxNGramCacheSize)
 	},
 	strdist.AlgoNameHamming: func(_ algoParams) (strdist.Algo, error) {
@@ -49,6 +50,7 @@ var algoMakers = map[string]algoMaker{
 			MinLength:         ap.minNGramLen,
 			OverFlowTheSource: ap.overflowTheSource,
 		}
+
 		return strdist.NewJaccardAlgo(ngc, ap.maxNGramCacheSize)
 	},
 	strdist.AlgoNameWeightedJaccard: func(ap algoParams) (
@@ -59,6 +61,7 @@ var algoMakers = map[string]algoMaker{
 			MinLength:         ap.minNGramLen,
 			OverFlowTheSource: ap.overflowTheSource,
 		}
+
 		return strdist.NewWeightedJaccardAlgo(ngc, ap.maxNGramCacheSize)
 	},
 }
