@@ -3,14 +3,14 @@ module github.com/nickwells/strdisttools
 go 1.26.0
 
 require (
-	github.com/nickwells/col.mod/v6 v6.0.3
+	github.com/nickwells/col.mod/v6 v6.1.0
 	github.com/nickwells/english.mod v1.2.8
 	github.com/nickwells/filecheck.mod v1.2.12
-	github.com/nickwells/param.mod/v7 v7.1.0
+	github.com/nickwells/param.mod/v7 v7.1.2
 	github.com/nickwells/strdist.mod/v2 v2.1.1
 	github.com/nickwells/testhelper.mod/v2 v2.5.0
-	github.com/nickwells/verbose.mod v1.1.18
-	github.com/nickwells/versionparams.mod v1.2.22
+	github.com/nickwells/verbose.mod v1.1.19
+	github.com/nickwells/versionparams.mod v1.2.23
 )
 
 require github.com/nickwells/tempus.mod v1.2.10 // indirect
