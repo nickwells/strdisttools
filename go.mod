@@ -6,11 +6,11 @@ require (
 	github.com/nickwells/col.mod/v6 v6.1.1
 	github.com/nickwells/english.mod v1.2.10
 	github.com/nickwells/filecheck.mod v1.2.13
-	github.com/nickwells/param.mod/v7 v7.2.3
+	github.com/nickwells/param.mod/v7 v7.2.4
 	github.com/nickwells/strdist.mod/v2 v2.1.2
 	github.com/nickwells/testhelper.mod/v2 v2.6.1
-	github.com/nickwells/verbose.mod v1.1.23
-	github.com/nickwells/versionparams.mod v1.2.27
+	github.com/nickwells/verbose.mod v1.1.24
+	github.com/nickwells/versionparams.mod v1.2.28
 )
 
 require github.com/nickwells/tempus.mod v1.2.11 // indirect
