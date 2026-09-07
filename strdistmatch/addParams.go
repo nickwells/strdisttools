@@ -48,13 +48,11 @@ func addParams(prog *Prog) param.PSetOptFunc {
 		}
 		algoDetailsSetter := ListMultiSetter[string, algoParams]{
 			Value: &prog.algoParams,
-			MultiSetterBase: MultiSetterBase[string, algoParams]{
-				DfltEntryVal: algoParams{
-					nGramLen:          dfltNGramLen,
-					maxNGramCacheSize: dftlMaxNGramCacheSize,
-				},
-				AVals: algoDetailsAVals,
+			DfltEntryVal: algoParams{
+				nGramLen:          dfltNGramLen,
+				maxNGramCacheSize: dftlMaxNGramCacheSize,
 			},
+			AVals: algoDetailsAVals,
 		}
 		algoDetailsSetter.EntryValSetterMap = map[string]EntryValSetter{
 			"nGramLen": {
