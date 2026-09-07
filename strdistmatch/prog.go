@@ -203,21 +203,21 @@ func (prog *Prog) makeReport(
 			"algorithm", "details"),
 		col.New(
 			&colfmt.Float{
-				W:       9,
-				Prec:    5,
-				NilHdlr: colfmt.NilHdlr{IgnoreNil: true},
+				W:         9,
+				Prec:      5,
+				IgnoreNil: true,
 			},
 			"Finder", "", "threshold"),
 		col.New(
 			&colfmt.Int{
-				W:       7,
-				NilHdlr: colfmt.NilHdlr{IgnoreNil: true},
+				W:         7,
+				IgnoreNil: true,
 			}, "Finder", "minimum", "str len"),
 		col.New(&colfmt.Bool{}, "Finder", "map to", "lower"),
 		col.New(
 			&colfmt.String{
-				W:       maxStripRunesLen,
-				NilHdlr: colfmt.NilHdlr{IgnoreNil: true},
+				W:         maxStripRunesLen,
+				IgnoreNil: true,
 			},
 			"Finder", "strip", "runes"),
 		col.New(&colfmt.Int{W: 3, HandleZeroes: true}, "# of", "results"),
@@ -227,15 +227,15 @@ func (prog *Prog) makeReport(
 		commonHeader := fmt.Sprintf("result %d", i+1)
 		cols = append(cols, col.New(
 			&colfmt.Float{
-				W:       8,
-				Prec:    4,
-				NilHdlr: colfmt.NilHdlr{IgnoreNil: true},
+				W:         8,
+				Prec:      4,
+				IgnoreNil: true,
 			},
 			commonHeader, "distance"))
 		cols = append(cols, col.New(
 			&colfmt.String{
-				W:       maxTargetLen * 2,
-				NilHdlr: colfmt.NilHdlr{IgnoreNil: true},
+				W:         maxTargetLen * 2,
+				IgnoreNil: true,
 			},
 			commonHeader, "value"))
 	}
